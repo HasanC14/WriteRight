@@ -26,7 +26,13 @@ const Navbar = () => {
                 <Link to={"/About"}>About</Link>
               </li>
               <li>
-                <Link to={"/Blog"}>Blog</Link>
+                <a
+                  href="https://github.com/HasanC14/WriteRight"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Git Repository
+                </a>
               </li>
             </ul>
           </div>
@@ -38,7 +44,13 @@ const Navbar = () => {
               <Link to={"/About"}>About</Link>
             </li>
             <li>
-              <Link to={"/Blog"}>Blog</Link>
+              <a
+                href="https://github.com/HasanC14/WriteRight"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Git Repository
+              </a>
             </li>
           </ul>
         </div>
