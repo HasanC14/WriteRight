@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Home = () => {
   const [inputValue, setInputValue] = useState("");
-  const [apiResponse, setApiResponse] = useState({});
+  const [apiResponse, setApiResponse] = useState("");
   const [service, setService] = useState("");
 
   const handleInputChange = (event) => {
@@ -10,12 +10,19 @@ const Home = () => {
       setInputValue(event.target.value);
     }
   };
-  const handleApiCall = (service) => {
+  const handleApiCall = async (service) => {
     setService(service);
-    fetch(`https://api.example.com/endpoint1/${inputValue}`)
-      .then((response) => response.json())
-      .then((data) => setApiResponse({ Response: data }))
-      .catch((error) => setApiResponse({ Response: error }));
+    const response = await fetch("http://localhost:5000/response", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ inputValue }),
+    });
+
+    const data = await response.json();
+    setApiResponse(data.data);
+    console.log(apiResponse);
   };
 
   return (
@@ -28,7 +35,7 @@ const Home = () => {
           <textarea
             onChange={handleInputChange}
             value={inputValue}
-            defaultValue="Write better, write smarter"
+            //defaultValue="Write better, write smarter"
             className="w-full h-96 p-10 border rounded-md bg-slate-300  text-zinc-700 text-xl font-serif lg:-mt-48 mt-0"
           />
           <p className="mt-2">Character count: {inputValue.length}/800</p>
@@ -37,7 +44,11 @@ const Home = () => {
       {/* Buttons */}
       <div className="flex  justify-center items-center">
         <div className="grid md:grid-cols-2 grid-cols-1 gap-10 mt-10">
-          <button onClick={() => handleApiCall("Rewrite")} className="w-72">
+          <button
+            type="submit"
+            onClick={() => handleApiCall("Rewrite")}
+            className="w-72"
+          >
             <label
               htmlFor="my-modal-3"
               className="px-14 py-7 relative rounded group overflow-hidden font-medium bg-purple-50 text-slate-700 inline-block w-72"
