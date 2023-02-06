@@ -1,5 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ThreeCircles } from "react-loader-spinner";
+import { FaCopy } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Home = () => {
   const [inputValue, setInputValue] = useState(
     "Write better, Write smarter..."
@@ -68,8 +71,35 @@ const Home = () => {
     const data = await response.json();
     setApiResponse(data.data);
   };
+  const copyTextToClipboard = (id) => {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      toast.success("Text copied to clipboard!", {
+        position: "top-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    });
+  };
+
   return (
     <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="dark"
+      />
       {/* Header */}
       <div className="bg-slate-700 h-96 "></div>
       {/* Input Field */}
@@ -92,7 +122,7 @@ const Home = () => {
               className="px-14 py-7 relative rounded group overflow-hidden font-medium bg-slate-300 text-slate-700 inline-block w-72"
             >
               <span className="absolute top-0 left-0 flex w-72 h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-slate-700 group-hover:h-full opacity-90"></span>
-              <span className="relative text-xl group-hover:text-white">
+              <span className="relative text-xl group-hover:text-slate-300">
                 Rewrite
               </span>
             </label>
@@ -106,7 +136,7 @@ const Home = () => {
               className="px-14 py-7 relative rounded group overflow-hidden font-medium bg-slate-300 text-slate-700 inline-block w-72"
             >
               <span className="absolute top-0 left-0 flex w-72 h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-slate-700 group-hover:h-full opacity-90"></span>
-              <span className="relative text-xl group-hover:text-white">
+              <span className="relative text-xl group-hover:text-slate-300">
                 Grammar Check
               </span>
             </label>
@@ -120,7 +150,7 @@ const Home = () => {
               className="px-14 py-7 relative rounded group overflow-hidden font-medium bg-slate-300 text-slate-700 inline-block w-72"
             >
               <span className="absolute top-0 left-0 flex w-72 h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-slate-700 group-hover:h-full opacity-90"></span>
-              <span className="relative text-xl group-hover:text-white">
+              <span className="relative text-xl group-hover:text-slate-300">
                 Spell Check
               </span>
             </label>
@@ -134,7 +164,7 @@ const Home = () => {
               className=" px-14 py-7 relative rounded group overflow-hidden font-medium bg-slate-300 text-slate-700 inline-block w-72"
             >
               <span className="absolute top-0 left-0 flex w-72 h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-slate-700 group-hover:h-full opacity-90"></span>
-              <span className="relative text-xl group-hover:text-white">
+              <span className="relative text-xl group-hover:text-slate-300">
                 Formal Tone
               </span>
             </label>
@@ -143,7 +173,6 @@ const Home = () => {
       </div>
       {/* Answer Modal */}
       {/* The button to open modal */}
-
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
@@ -153,9 +182,17 @@ const Home = () => {
           >
             ✕
           </label>
+          <button
+            className="btn btn-sm btn-circle absolute right-12 top-2"
+            onClick={() => copyTextToClipboard("text-to-copy")}
+          >
+            <FaCopy />
+          </button>
           <h3 className="text-lg font-bold">{service}</h3>
           {apiResponse ? (
-            <p className="py-4">{apiResponse}</p>
+            <p id="text-to-copy" className="py-4">
+              {apiResponse}
+            </p>
           ) : (
             <div className="flex justify-center mt-10 mb-10">
               <ThreeCircles

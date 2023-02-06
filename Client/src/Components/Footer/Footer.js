@@ -18,6 +18,7 @@ const Footer = () => {
             href="https://github.com/HasanC14"
             target="_blank"
             rel="noreferrer"
+            className="hover:text-white"
           >
             <FaGithub></FaGithub>
           </a>
@@ -25,6 +26,7 @@ const Footer = () => {
             href="https://www.facebook.com/hasan.chowdhuryD/"
             target="_blank"
             rel="noreferrer"
+            className="hover:text-white"
           >
             <FaFacebook></FaFacebook>
           </a>
@@ -32,6 +34,7 @@ const Footer = () => {
             href="https://www.linkedin.com/in/hasanchowdhuryd/"
             target="_blank"
             rel="noreferrer"
+            className="hover:text-white"
           >
             <FaLinkedinIn></FaLinkedinIn>
           </a>
