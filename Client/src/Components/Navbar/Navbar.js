@@ -1,13 +1,14 @@
 import React from "react";
 import { FaListUl } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import logo from "../../Assets/logo.png";
 const Navbar = () => {
   return (
     <div>
       <div className="navbar bg-base-100 max-w-screen-xl mx-auto">
         <div className="navbar-start">
           <Link to={"/"} className="btn btn-ghost normal-case text-xl">
-            WriteRight
+            <img src={logo} alt="logo" className="w-28" />
           </Link>
         </div>
         <div className="navbar-end">

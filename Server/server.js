@@ -9,8 +9,8 @@ app.use(express.json());
 
 const configuration = new Configuration({
   organization: "org-CeQsOcAwJYIpB68fB5cSpn7j",
-  // apiKey: process.env.OPENAI_API_KEY,
-  apiKey: "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",
+  apiKey: process.env.OPENAI_API_KEY,
+  //apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 

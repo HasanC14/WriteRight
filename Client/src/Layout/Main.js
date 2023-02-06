@@ -5,13 +5,13 @@ import Navbar from "../Components/Navbar/Navbar";
 
 const Main = () => {
   return (
-    //<div className="flex flex-col h-screen justify-between">
-    <div>
+    <div className="flex flex-col h-screen justify-between">
       <Navbar></Navbar>
-      <div>
-        <Outlet></Outlet>
+
+      <Outlet></Outlet>
+      <div className="mt-24">
+        <Footer></Footer>
       </div>
-      <Footer></Footer>
     </div>
   );
 };

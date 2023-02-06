@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { ThreeCircles } from "react-loader-spinner";
 const Home = () => {
   const [inputValue, setInputValue] = useState(
     "Write better, Write smarter..."
@@ -89,7 +89,7 @@ const Home = () => {
           <button onClick={() => handleApiCall1("Rewrite")} className="w-72">
             <label
               htmlFor="my-modal-3"
-              className="px-14 py-7 relative rounded group overflow-hidden font-medium bg-purple-50 text-slate-700 inline-block w-72"
+              className="px-14 py-7 relative rounded group overflow-hidden font-medium bg-slate-300 text-slate-700 inline-block w-72"
             >
               <span className="absolute top-0 left-0 flex w-72 h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-slate-700 group-hover:h-full opacity-90"></span>
               <span className="relative text-xl group-hover:text-white">
@@ -103,7 +103,7 @@ const Home = () => {
           >
             <label
               htmlFor="my-modal-3"
-              className="px-14 py-7 relative rounded group overflow-hidden font-medium bg-purple-50 text-slate-700 inline-block w-72"
+              className="px-14 py-7 relative rounded group overflow-hidden font-medium bg-slate-300 text-slate-700 inline-block w-72"
             >
               <span className="absolute top-0 left-0 flex w-72 h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-slate-700 group-hover:h-full opacity-90"></span>
               <span className="relative text-xl group-hover:text-white">
@@ -117,7 +117,7 @@ const Home = () => {
           >
             <label
               htmlFor="my-modal-3"
-              className="px-14 py-7 relative rounded group overflow-hidden font-medium bg-purple-50 text-slate-700 inline-block w-72"
+              className="px-14 py-7 relative rounded group overflow-hidden font-medium bg-slate-300 text-slate-700 inline-block w-72"
             >
               <span className="absolute top-0 left-0 flex w-72 h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-slate-700 group-hover:h-full opacity-90"></span>
               <span className="relative text-xl group-hover:text-white">
@@ -131,7 +131,7 @@ const Home = () => {
           >
             <label
               htmlFor="my-modal-3"
-              className=" px-14 py-7 relative rounded group overflow-hidden font-medium bg-purple-50 text-slate-700 inline-block w-72"
+              className=" px-14 py-7 relative rounded group overflow-hidden font-medium bg-slate-300 text-slate-700 inline-block w-72"
             >
               <span className="absolute top-0 left-0 flex w-72 h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-slate-700 group-hover:h-full opacity-90"></span>
               <span className="relative text-xl group-hover:text-white">
@@ -154,8 +154,24 @@ const Home = () => {
             ✕
           </label>
           <h3 className="text-lg font-bold">{service}</h3>
-          {/* {apiResponse?} */}
-          <p className="py-4">{apiResponse}</p>
+          {apiResponse ? (
+            <p className="py-4">{apiResponse}</p>
+          ) : (
+            <div className="flex justify-center mt-10 mb-10">
+              <ThreeCircles
+                height="50"
+                width="50"
+                color="rgb(180,198,239)"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel="three-circles-rotating"
+                outerCircleColor=""
+                innerCircleColor=""
+                middleCircleColor=""
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>
