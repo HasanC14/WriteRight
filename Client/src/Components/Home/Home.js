@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { ThreeCircles } from "react-loader-spinner";
-import { FaCopy } from "react-icons/fa";
+import { FaCopy, FaUndoAlt } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const Home = () => {
-  const buttons = ["Rewrite", "Grammar Check", "Spell Check", "Formal Tone"];
   const [inputValue, setInputValue] = useState(
     "Write better, Write smarter..."
   );
@@ -16,7 +16,7 @@ const Home = () => {
       setInputValue(event.target.value);
     }
   };
-  const handleApiCall1 = async (service) => {
+  const handleRewriteAPI = async (service) => {
     setService(service);
     setApiResponse("");
     const response = await fetch("http://localhost:5000/rewrite", {
@@ -30,7 +30,7 @@ const Home = () => {
     const data = await response.json();
     setApiResponse(data.data);
   };
-  const handleApiCall2 = async (service) => {
+  const handleGrammarAPI = async (service) => {
     setService(service);
     setApiResponse("");
     const response = await fetch("http://localhost:5000/grammar", {
@@ -44,7 +44,7 @@ const Home = () => {
     const data = await response.json();
     setApiResponse(data.data);
   };
-  const handleApiCall3 = async (service) => {
+  const handleSpellAPI = async (service) => {
     setService(service);
     setApiResponse("");
     const response = await fetch("http://localhost:5000/spell", {
@@ -58,7 +58,7 @@ const Home = () => {
     const data = await response.json();
     setApiResponse(data.data);
   };
-  const handleApiCall4 = async (service) => {
+  const handleFormalAPI = async (service) => {
     setService(service);
     setApiResponse("");
     const response = await fetch("http://localhost:5000/formal", {
@@ -72,6 +72,25 @@ const Home = () => {
     const data = await response.json();
     setApiResponse(data.data);
   };
+  const handleApiCallAgain = (service) => {
+    switch (service) {
+      case "Rewrite":
+        handleRewriteAPI(service);
+        break;
+      case "Grammar Check":
+        handleGrammarAPI(service);
+        break;
+      case "Spell Check":
+        handleSpellAPI(service);
+        break;
+      case "Formal Tone":
+        handleFormalAPI(service);
+        break;
+      default:
+        break;
+    }
+  };
+
   const copyTextToClipboard = (id) => {
     const text = document.getElementById(id).innerText;
     navigator.clipboard.writeText(text).then(() => {
@@ -102,14 +121,14 @@ const Home = () => {
         theme="dark"
       />
       {/* Header */}
-      <div className="bg-slate-700 h-96 "></div>
+      <div className="bg-slate-700 lg:h-96 md:h-72 h-60"></div>
       {/* Input Field */}
       <div className="flex  justify-center items-center">
-        <div className="w-full max-w-4xl">
+        <div className="w-full lg:max-w-4xl md:max-w-2xl max-w-sm">
           <textarea
             onChange={handleInputChange}
             value={inputValue}
-            className="w-full h-96 p-10 border rounded-md bg-slate-300  text-zinc-700 text-xl font-serif lg:-mt-48 mt-0"
+            className="w-full  h-96 p-10 border rounded-md bg-slate-300  text-zinc-700 md:text-xl text-lg font-serif lg:-mt-48 md:-mt-40 -mt-32"
           />
           <p className="mt-2">Character count: {inputValue.length}/800</p>
         </div>
@@ -117,7 +136,7 @@ const Home = () => {
       {/* Buttons */}
       <div className="flex  justify-center items-center">
         <div className="grid md:grid-cols-2 grid-cols-1 gap-10 mt-10">
-          <button onClick={() => handleApiCall1("Rewrite")} className="w-72">
+          <button onClick={() => handleRewriteAPI("Rewrite")} className="w-72">
             <label
               htmlFor="my-modal-3"
               className="px-14 py-7 relative rounded group overflow-hidden font-medium bg-slate-300 text-slate-700 inline-block w-72"
@@ -129,7 +148,7 @@ const Home = () => {
             </label>
           </button>
           <button
-            onClick={() => handleApiCall2("Grammar Check")}
+            onClick={() => handleGrammarAPI("Grammar Check")}
             className="w-72"
           >
             <label
@@ -143,7 +162,7 @@ const Home = () => {
             </label>
           </button>
           <button
-            onClick={() => handleApiCall3("Spell Check")}
+            onClick={() => handleSpellAPI("Spell Check")}
             className="w-72"
           >
             <label
@@ -157,7 +176,7 @@ const Home = () => {
             </label>
           </button>
           <button
-            onClick={() => handleApiCall4("Formal Tone")}
+            onClick={() => handleFormalAPI("Formal Tone")}
             className="w-72"
           >
             <label
@@ -172,23 +191,29 @@ const Home = () => {
           </button>
         </div>
       </div>
-      {/* Answer Modal */}
-      {/* The button to open modal */}
+      {/* Response Modal */}
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
           <label
             htmlFor="my-modal-3"
-            className="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-sm btn-circle absolute right-4 top-4"
           >
             ✕
           </label>
-          <button
-            className="btn btn-sm btn-circle absolute right-12 top-2"
+          <label
+            className="btn btn-sm btn-circle absolute right-14 top-4"
             onClick={() => copyTextToClipboard("text-to-copy")}
           >
             <FaCopy />
-          </button>
+          </label>
+          <label
+            className="btn btn-sm btn-circle absolute right-24 top-4"
+            onClick={() => handleApiCallAgain(service)}
+          >
+            <FaUndoAlt className="mx-auto" />
+          </label>
+
           <h3 className="text-lg font-bold">{service}</h3>
           {apiResponse ? (
             <p id="text-to-copy" className="py-4">

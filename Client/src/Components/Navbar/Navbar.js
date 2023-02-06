@@ -13,8 +13,8 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
-              <FaListUl></FaListUl>
+            <label tabIndex={0} className="btn btn-ghost lg:hidden text-xl">
+              <FaListUl />
             </label>
             <ul
               tabIndex={0}

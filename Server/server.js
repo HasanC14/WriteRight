@@ -18,7 +18,7 @@ app.post("/rewrite", async (req, res) => {
   const input = req.body.inputValue;
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `Please rephrase the following text in your own words, ensuring that the meaning and tone are preserved:  ${input}`,
+    prompt: `Please rephrase the following text in your own words, ensuring that the meaning and tone are preserved.:  ${input}`,
     max_tokens: 3000,
     temperature: 0.5,
     top_p: 1,
