@@ -4,6 +4,7 @@ import { FaCopy } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Home = () => {
+  const buttons = ["Rewrite", "Grammar Check", "Spell Check", "Formal Tone"];
   const [inputValue, setInputValue] = useState(
     "Write better, Write smarter..."
   );

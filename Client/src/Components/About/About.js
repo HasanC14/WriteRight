@@ -23,10 +23,12 @@ const About = () => {
             </span>
             . Whether you're a student, professional, or just someone looking to
             improve their writing skills, WriteRight is the perfect solution for
-            you. Built with the latest web technologies, including ReactJS,
-            NodeJS, and Express, WriteRight is fast, reliable, and easy to use.
-            So why wait? Start using WriteRight today and take your writing to
-            the next level!
+            you. Built with the latest web technologies, including{" "}
+            <span className="font-bold text-2xl">
+              ReactJS, Node.js, and Express.js,
+            </span>{" "}
+            WriteRight is fast, reliable, and easy to use. So why wait? Start
+            using WriteRight today and take your writing to the next level!
           </p>
         </div>
       </div>
@@ -55,6 +57,7 @@ const About = () => {
                   href="https://github.com/HasanC14"
                   target="_blank"
                   rel="noreferrer"
+                  className="hover:text-white"
                 >
                   <FaGithub></FaGithub>
                 </a>
@@ -62,6 +65,7 @@ const About = () => {
                   href="https://www.facebook.com/hasan.chowdhuryD/"
                   target="_blank"
                   rel="noreferrer"
+                  className="hover:text-white"
                 >
                   <FaFacebook></FaFacebook>
                 </a>
@@ -69,6 +73,7 @@ const About = () => {
                   href="https://www.linkedin.com/in/hasanchowdhuryd/"
                   target="_blank"
                   rel="noreferrer"
+                  className="hover:text-white"
                 >
                   <FaLinkedinIn></FaLinkedinIn>
                 </a>
