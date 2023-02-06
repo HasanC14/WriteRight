@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Home = () => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(
+    "Write better, Write smarter..."
+  );
   const [apiResponse, setApiResponse] = useState("");
   const [service, setService] = useState("");
 
@@ -10,9 +12,10 @@ const Home = () => {
       setInputValue(event.target.value);
     }
   };
-  const handleApiCall = async (service) => {
+  const handleApiCall1 = async (service) => {
     setService(service);
-    const response = await fetch("http://localhost:5000/response", {
+    setApiResponse("");
+    const response = await fetch("http://localhost:5000/rewrite", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,9 +25,49 @@ const Home = () => {
 
     const data = await response.json();
     setApiResponse(data.data);
-    console.log(apiResponse);
   };
+  const handleApiCall2 = async (service) => {
+    setService(service);
+    setApiResponse("");
+    const response = await fetch("http://localhost:5000/grammar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ inputValue }),
+    });
 
+    const data = await response.json();
+    setApiResponse(data.data);
+  };
+  const handleApiCall3 = async (service) => {
+    setService(service);
+    setApiResponse("");
+    const response = await fetch("http://localhost:5000/spell", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ inputValue }),
+    });
+
+    const data = await response.json();
+    setApiResponse(data.data);
+  };
+  const handleApiCall4 = async (service) => {
+    setService(service);
+    setApiResponse("");
+    const response = await fetch("http://localhost:5000/formal", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ inputValue }),
+    });
+
+    const data = await response.json();
+    setApiResponse(data.data);
+  };
   return (
     <div>
       {/* Header */}
@@ -35,7 +78,6 @@ const Home = () => {
           <textarea
             onChange={handleInputChange}
             value={inputValue}
-            //defaultValue="Write better, write smarter"
             className="w-full h-96 p-10 border rounded-md bg-slate-300  text-zinc-700 text-xl font-serif lg:-mt-48 mt-0"
           />
           <p className="mt-2">Character count: {inputValue.length}/800</p>
@@ -44,11 +86,7 @@ const Home = () => {
       {/* Buttons */}
       <div className="flex  justify-center items-center">
         <div className="grid md:grid-cols-2 grid-cols-1 gap-10 mt-10">
-          <button
-            type="submit"
-            onClick={() => handleApiCall("Rewrite")}
-            className="w-72"
-          >
+          <button onClick={() => handleApiCall1("Rewrite")} className="w-72">
             <label
               htmlFor="my-modal-3"
               className="px-14 py-7 relative rounded group overflow-hidden font-medium bg-purple-50 text-slate-700 inline-block w-72"
@@ -60,7 +98,7 @@ const Home = () => {
             </label>
           </button>
           <button
-            onClick={() => handleApiCall("Grammar Check")}
+            onClick={() => handleApiCall2("Grammar Check")}
             className="w-72"
           >
             <label
@@ -73,7 +111,10 @@ const Home = () => {
               </span>
             </label>
           </button>
-          <button onClick={() => handleApiCall("Spell Check")} className="w-72">
+          <button
+            onClick={() => handleApiCall3("Spell Check")}
+            className="w-72"
+          >
             <label
               htmlFor="my-modal-3"
               className="px-14 py-7 relative rounded group overflow-hidden font-medium bg-purple-50 text-slate-700 inline-block w-72"
@@ -84,7 +125,10 @@ const Home = () => {
               </span>
             </label>
           </button>
-          <button onClick={() => handleApiCall("Formal Tone")} className="w-72">
+          <button
+            onClick={() => handleApiCall4("Formal Tone")}
+            className="w-72"
+          >
             <label
               htmlFor="my-modal-3"
               className=" px-14 py-7 relative rounded group overflow-hidden font-medium bg-purple-50 text-slate-700 inline-block w-72"
@@ -110,7 +154,8 @@ const Home = () => {
             ✕
           </label>
           <h3 className="text-lg font-bold">{service}</h3>
-          {/* <p className="py-4">{apiResponse}</p> */}
+          {/* {apiResponse?} */}
+          <p className="py-4">{apiResponse}</p>
         </div>
       </div>
     </div>
