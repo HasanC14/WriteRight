@@ -44,10 +44,10 @@ const Home = () => {
     const data = await response.json();
     setApiResponse(data.data);
   };
-  const handleSpellAPI = async (service) => {
+  const handleStoryAPI = async (service) => {
     setService(service);
     setApiResponse("");
-    const response = await fetch("http://localhost:5000/spell", {
+    const response = await fetch("http://localhost:5000/story", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -80,8 +80,8 @@ const Home = () => {
       case "Grammar Check":
         handleGrammarAPI(service);
         break;
-      case "Spell Check":
-        handleSpellAPI(service);
+      case "Story Telling":
+        handleStoryAPI(service);
         break;
       case "Formal Tone":
         handleFormalAPI(service);
@@ -121,7 +121,7 @@ const Home = () => {
         theme="dark"
       />
       {/* Header */}
-      <div className="bg-slate-700 lg:h-96 md:h-72 h-60"></div>
+      <div className="bg-slate-700 lg:h-96 md:h-72 h-64"></div>
       {/* Input Field */}
       <div className="flex  justify-center items-center">
         <div className="w-full lg:max-w-4xl md:max-w-2xl max-w-sm">
@@ -162,7 +162,7 @@ const Home = () => {
             </label>
           </button>
           <button
-            onClick={() => handleSpellAPI("Spell Check")}
+            onClick={() => handleStoryAPI("Story Telling")}
             className="w-72"
           >
             <label
@@ -171,7 +171,7 @@ const Home = () => {
             >
               <span className="absolute top-0 left-0 flex w-72 h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-slate-700 group-hover:h-full opacity-90"></span>
               <span className="relative text-xl group-hover:text-slate-300">
-                Spell Check
+                Story Telling
               </span>
             </label>
           </button>

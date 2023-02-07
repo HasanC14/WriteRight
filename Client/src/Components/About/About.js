@@ -36,7 +36,7 @@ const About = () => {
       </div>
 
       <div className="mockup-window border bg-base-300 max-w-screen-lg mx-auto mt-10">
-        <div className="grid lg:grid-cols-3 grid-cols-1 md:px-4 md:py-16 p-0 bg-base-200">
+        <div className="grid lg:grid-cols-3 grid-cols-1 md:px-4 md:py-16 p-3 bg-base-200">
           <div className="m-auto col-span-1">
             <img
               src={MyImage}

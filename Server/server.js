@@ -10,7 +10,6 @@ app.use(express.json());
 const configuration = new Configuration({
   organization: "org-CeQsOcAwJYIpB68fB5cSpn7j",
   apiKey: process.env.OPENAI_API_KEY,
-  //apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 
@@ -18,7 +17,7 @@ app.post("/rewrite", async (req, res) => {
   const input = req.body.inputValue;
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `Please rephrase the following text in your own words, ensuring that the meaning and tone are preserved.:  ${input}`,
+    prompt: `Please rephrase the following text in your own words, ensuring that the meaning and tone are preserved:  ${input}`,
     max_tokens: 3000,
     temperature: 0.5,
     top_p: 1,
@@ -59,16 +58,16 @@ app.post("/grammar", async (req, res) => {
     data: response.data.choices[0].text,
   });
 });
-app.post("/spell", async (req, res) => {
+app.post("/story", async (req, res) => {
   const input = req.body.inputValue;
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `Please check the spelling errors in this text and provide the correct spellings in a list, Example: 1.❌Fotball ☑️Football: ${input}`,
+    prompt: `Transform the given text into a captivating story: ${input}`,
     max_tokens: 3000,
-    temperature: 0,
+    temperature: 0.5,
     top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0,
+    frequency_penalty: 0.5,
+    presence_penalty: 0.3,
   });
   res.send({
     data: response.data.choices[0].text,
