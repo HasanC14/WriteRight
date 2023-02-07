@@ -221,6 +221,13 @@ const Home = () => {
             </p>
           ) : (
             <div className="flex justify-center mt-10 mb-10">
+              {service === "Story Telling" ? (
+                <p id="text-to-copy" className="py-4 mr-3">
+                  Hang tight, the plot may take some time to develop...
+                </p>
+              ) : (
+                ""
+              )}
               <ThreeCircles
                 height="50"
                 width="50"
