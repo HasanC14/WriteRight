@@ -19,13 +19,16 @@ const Home = () => {
   const handleRewriteAPI = async (service) => {
     setService(service);
     setApiResponse("");
-    const response = await fetch("http://localhost:5000/rewrite", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ inputValue }),
-    });
+    const response = await fetch(
+      "https://write-right-server-rosy.vercel.app/rewrite",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ inputValue }),
+      }
+    );
 
     const data = await response.json();
     setApiResponse(data.data);
@@ -33,13 +36,16 @@ const Home = () => {
   const handleGrammarAPI = async (service) => {
     setService(service);
     setApiResponse("");
-    const response = await fetch("http://localhost:5000/grammar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ inputValue }),
-    });
+    const response = await fetch(
+      "https://write-right-server-rosy.vercel.app/grammar",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ inputValue }),
+      }
+    );
 
     const data = await response.json();
     setApiResponse(data.data);
@@ -47,13 +53,16 @@ const Home = () => {
   const handleStoryAPI = async (service) => {
     setService(service);
     setApiResponse("");
-    const response = await fetch("http://localhost:5000/story", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ inputValue }),
-    });
+    const response = await fetch(
+      "https://write-right-server-rosy.vercel.app/story",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ inputValue }),
+      }
+    );
 
     const data = await response.json();
     setApiResponse(data.data);
@@ -61,13 +70,16 @@ const Home = () => {
   const handleFormalAPI = async (service) => {
     setService(service);
     setApiResponse("");
-    const response = await fetch("http://localhost:5000/formal", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ inputValue }),
-    });
+    const response = await fetch(
+      "https://write-right-server-rosy.vercel.app/formal",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ inputValue }),
+      }
+    );
 
     const data = await response.json();
     setApiResponse(data.data);
