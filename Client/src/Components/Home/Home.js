@@ -133,14 +133,14 @@ const Home = () => {
         theme="dark"
       />
       {/* Header */}
-      <div className="bg-slate-700 lg:h-96 md:h-72 h-64"></div>
+      <div className="bg-slate-700 lg:h-96 md:h-72 h-72"></div>
       {/* Input Field */}
       <div className="flex  justify-center items-center">
-        <div className="w-full lg:max-w-4xl md:max-w-2xl max-w-sm">
+        <div className="w-full lg:max-w-4xl md:max-w-2xl max-w-xs">
           <textarea
             onChange={handleInputChange}
             value={inputValue}
-            className="w-full  h-96 p-10 border rounded-md bg-slate-300  text-zinc-700 md:text-xl text-lg font-serif lg:-mt-48 md:-mt-40 -mt-32"
+            className="w-full  h-96 p-10 border rounded-md bg-slate-300  text-zinc-700 md:text-xl text-lg font-serif lg:-mt-48 md:-mt-40 -mt-44"
           />
           <p className="mt-2">Character count: {inputValue.length}/1000</p>
         </div>
