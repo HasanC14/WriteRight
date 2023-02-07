@@ -21,7 +21,7 @@ const About = () => {
             language processing technology, WriteRight offers a suite of tools
             to enhance your writing, including{" "}
             <span className="font-bold md:text-2xl text-lg">
-              Rewriting, Spelling and Grammar Checking, and Tone Conversion
+              Rewriting, Summarize, Grammar Checking, and Tone Conversion
             </span>
             . Whether you're a student, professional, or just someone looking to
             improve their writing skills, WriteRight is the perfect solution for

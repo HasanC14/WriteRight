@@ -47,9 +47,9 @@ app.post("/grammar", async (req, res) => {
   const input = req.body.inputValue;
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `Please check the grammar and syntax of the following text and provide the mistakes with a detailed explanation in a list: ${input}`,
+    prompt: `Please check the grammar of the following text and provide a detailed explanation: ${input}`,
     max_tokens: 3000,
-    temperature: 0,
+    temperature: 0.5,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
@@ -58,16 +58,16 @@ app.post("/grammar", async (req, res) => {
     data: response.data.choices[0].text,
   });
 });
-app.post("/story", async (req, res) => {
+app.post("/summarize", async (req, res) => {
   const input = req.body.inputValue;
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `Transform the given text into a captivating story: ${input}`,
-    max_tokens: 3000,
-    temperature: 0.5,
+    prompt: `Please summarize the following paragraph into a few concise sentences while preserving the main idea and key points: ${input}`,
+    max_tokens: 2000,
+    temperature: 0.7,
     top_p: 1,
-    frequency_penalty: 0.5,
-    presence_penalty: 0.3,
+    frequency_penalty: 0.3,
+    presence_penalty: 0.2,
   });
   res.send({
     data: response.data.choices[0].text,

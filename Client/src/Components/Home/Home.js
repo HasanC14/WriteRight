@@ -12,7 +12,7 @@ const Home = () => {
   const [service, setService] = useState("");
 
   const handleInputChange = (event) => {
-    if (event.target.value.length <= 800) {
+    if (event.target.value.length <= 1000) {
       setInputValue(event.target.value);
     }
   };
@@ -50,11 +50,11 @@ const Home = () => {
     const data = await response.json();
     setApiResponse(data.data);
   };
-  const handleStoryAPI = async (service) => {
+  const handlesummarizeAPI = async (service) => {
     setService(service);
     setApiResponse("");
     const response = await fetch(
-      "https://write-right-server-rosy.vercel.app/story",
+      "https://write-right-server-rosy.vercel.app/summarize",
       {
         method: "POST",
         headers: {
@@ -92,8 +92,8 @@ const Home = () => {
       case "Grammar Check":
         handleGrammarAPI(service);
         break;
-      case "Story Telling":
-        handleStoryAPI(service);
+      case "summarize":
+        handlesummarizeAPI(service);
         break;
       case "Formal Tone":
         handleFormalAPI(service);
@@ -142,7 +142,7 @@ const Home = () => {
             value={inputValue}
             className="w-full  h-96 p-10 border rounded-md bg-slate-300  text-zinc-700 md:text-xl text-lg font-serif lg:-mt-48 md:-mt-40 -mt-32"
           />
-          <p className="mt-2">Character count: {inputValue.length}/800</p>
+          <p className="mt-2">Character count: {inputValue.length}/1000</p>
         </div>
       </div>
       {/* Buttons */}
@@ -174,7 +174,7 @@ const Home = () => {
             </label>
           </button>
           <button
-            onClick={() => handleStoryAPI("Story Telling")}
+            onClick={() => handlesummarizeAPI("summarize ")}
             className="w-72"
           >
             <label
@@ -183,7 +183,7 @@ const Home = () => {
             >
               <span className="absolute top-0 left-0 flex w-72 h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-slate-700 group-hover:h-full opacity-90"></span>
               <span className="relative text-xl group-hover:text-slate-300">
-                Story Telling
+                Summarize
               </span>
             </label>
           </button>
@@ -233,13 +233,6 @@ const Home = () => {
             </p>
           ) : (
             <div className="flex justify-center mt-10 mb-10">
-              {service === "Story Telling" ? (
-                <p id="text-to-copy" className="py-4 mr-3">
-                  Hang tight, the plot may take some time to develop...
-                </p>
-              ) : (
-                ""
-              )}
               <ThreeCircles
                 height="50"
                 width="50"

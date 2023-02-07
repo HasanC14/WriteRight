@@ -11,6 +11,7 @@ https://write-right-1111.netlify.app/
 - Rewriting
 - Grammar Checking
 - Tone Conversion
+- Summarize
 - Fast and reliable
 - Built with latest web technologies
 - Easy to use
