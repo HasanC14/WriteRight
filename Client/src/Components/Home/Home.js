@@ -50,7 +50,7 @@ const Home = () => {
     const data = await response.json();
     setApiResponse(data.data);
   };
-  const handlesummarizeAPI = async (service) => {
+  const handleSummarizeAPI = async (service) => {
     setService(service);
     setApiResponse("");
     const response = await fetch(
@@ -92,8 +92,8 @@ const Home = () => {
       case "Grammar Check":
         handleGrammarAPI(service);
         break;
-      case "summarize":
-        handlesummarizeAPI(service);
+      case "Summarize":
+        handleSummarizeAPI(service);
         break;
       case "Formal Tone":
         handleFormalAPI(service);
@@ -174,7 +174,7 @@ const Home = () => {
             </label>
           </button>
           <button
-            onClick={() => handlesummarizeAPI("summarize ")}
+            onClick={() => handleSummarizeAPI("Summarize ")}
             className="w-72"
           >
             <label
