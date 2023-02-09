@@ -5,9 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
-  const [inputValue, setInputValue] = useState(
-    "Write better, Write smarter..."
-  );
+  const [inputValue, setInputValue] = useState("");
   const [apiResponse, setApiResponse] = useState("");
   const [service, setService] = useState("");
 
@@ -140,6 +138,7 @@ const Home = () => {
           <textarea
             onChange={handleInputChange}
             value={inputValue}
+            placeholder="Write better, Write smarter..."
             className="w-full  h-96 p-10 border rounded-md bg-slate-300  text-zinc-700 md:text-xl text-lg font-serif lg:-mt-48 md:-mt-40 -mt-44"
           />
           <p className="mt-2">Character count: {inputValue.length}/1000</p>
@@ -174,7 +173,7 @@ const Home = () => {
             </label>
           </button>
           <button
-            onClick={() => handleSummarizeAPI("Summarize ")}
+            onClick={() => handleSummarizeAPI("Summarize")}
             className="w-72"
           >
             <label
