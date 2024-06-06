@@ -17,19 +17,17 @@ const Home = () => {
   const handleRewriteAPI = async (service) => {
     setService(service);
     setApiResponse("");
-    const response = await fetch(
-      "https://write-right-server-rosy.vercel.app/rewrite",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ inputValue }),
-      }
-    );
+    const response = await fetch("http://localhost:5000/rewrite", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ inputValue }),
+    });
 
     const data = await response.json();
-    setApiResponse(data.data);
+    console.log(data.data);
+    // setApiResponse(data.data);
   };
   const handleGrammarAPI = async (service) => {
     setService(service);

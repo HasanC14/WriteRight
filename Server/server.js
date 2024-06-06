@@ -1,4 +1,3 @@
-// const { Configuration, OpenAIApi } = require("openai");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
@@ -10,48 +9,89 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
+const generateResponse = async (prompt, res) => {
+  try {
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
+    res.send(text);
+  } catch (error) {
+    res.status(500).send("Error generating response");
+  }
+};
+
 app.post("/rewrite", async (req, res) => {
   const input = req.body.inputValue;
-  const prompt = `Please rephrase the following text in your own words, ensuring that the meaning and tone are preserved:  ${input}`;
-
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  const text = response.text();
-  res.send(text);
+  const prompt = `Paraphrase the following text in a clear and straightforward manner, maintaining the original meaning: '${input}'`;
+  await generateResponse(prompt, res);
 });
+
+app.post("/fluency", async (req, res) => {
+  const input = req.body.inputValue;
+  const prompt = `Paraphrase the following text to improve readability and flow, ensuring it is smooth and easy to understand: '${input}'`;
+  await generateResponse(prompt, res);
+});
+
+app.post("/natural", async (req, res) => {
+  const input = req.body.inputValue;
+  const prompt = `Paraphrase the following text to make it sound natural and conversational, as if it were spoken by a native speaker: '${input}'`;
+  await generateResponse(prompt, res);
+});
+
 app.post("/formal", async (req, res) => {
   const input = req.body.inputValue;
-  const prompt = `Please convert the following text to a formal tone:  ${input}`;
-
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  const text = response.text();
-  res.send(text);
+  const prompt = `Paraphrase the following text in a formal tone suitable for professional or official communication: '${input}'`;
+  await generateResponse(prompt, res);
 });
+
+app.post("/academic", async (req, res) => {
+  const input = req.body.inputValue;
+  const prompt = `Paraphrase the following text in an academic style, suitable for use in scholarly writing or research papers: '${input}'`;
+  await generateResponse(prompt, res);
+});
+
+app.post("/simple", async (req, res) => {
+  const input = req.body.inputValue;
+  const prompt = `Paraphrase the following text to make it simpler and easier to understand, using basic language: '${input}'`;
+  await generateResponse(prompt, res);
+});
+
+app.post("/creative", async (req, res) => {
+  const input = req.body.inputValue;
+  const prompt = `Paraphrase the following text with a creative twist, adding imaginative elements or a unique perspective: '${input}'`;
+  await generateResponse(prompt, res);
+});
+
+app.post("/expand", async (req, res) => {
+  const input = req.body.inputValue;
+  const prompt = `Paraphrase the following text by expanding on the ideas, adding more details and elaboration: '${input}'`;
+  await generateResponse(prompt, res);
+});
+
+app.post("/shorten", async (req, res) => {
+  const input = req.body.inputValue;
+  const prompt = `Paraphrase the following text to make it more concise, keeping only the essential information: '${input}'`;
+  await generateResponse(prompt, res);
+});
+
 app.post("/grammar", async (req, res) => {
   const input = req.body.inputValue;
   const prompt = `Please check the grammar of the following text and provide a detailed explanation: ${input}`;
-
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  const text = response.text();
-  res.send(text);
+  await generateResponse(prompt, res);
 });
+
 app.post("/summarize", async (req, res) => {
   const input = req.body.inputValue;
   const prompt = `Please summarize the following paragraph into a few concise sentences while preserving the main idea and key points: ${input}`;
-
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  const text = response.text();
-  res.send(text);
+  await generateResponse(prompt, res);
 });
 
 app.get("/", (req, res) => {
   res.send("API running");
 });
+
 app.listen(port, () => {
-  console.log(`server running on port ${port}`);
+  console.log(`Server running on port ${port}`);
 });
 
 // const run = async () => {
