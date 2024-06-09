@@ -4,7 +4,7 @@ WriteRight is a cutting-edge platform that helps users communicate more effectiv
 
 ## Live Site
 
-[https://write-right-1111.netlify.app/](https://write-right.vercel.app/)
+[https://write-right.vercel.app/](https://write-right.vercel.app/)
 
 ## Features
 
