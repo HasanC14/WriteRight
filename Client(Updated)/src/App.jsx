@@ -110,7 +110,7 @@ function App() {
             key={index}
             className={`px-4 py-2 rounded-lg hover:scale-110  transition-all ease-in-out duration-700 border-none ${
               activeTab === filter.text
-                ? "bg-prime text-white scale-110 shadow-2xl transition-all transform -translate-y-4"
+                ? "bg-prime text-white scale-110 shadow-2xl transition-all transform -translate-y-2"
                 : "bg-gray-100 text-gray-400"
             }`}
             onClick={() => handleTabClick(filter.endpoint, filter.text)}
