@@ -82,7 +82,7 @@ function App() {
     if (window.innerWidth <= 350) {
       setSlidesPerView(2);
     } else if (window.innerWidth <= 550) {
-      setSlidesPerView(3);
+      setSlidesPerView(2.5);
     } else if (window.innerWidth <= 720) {
       setSlidesPerView(5);
     } else {
@@ -108,10 +108,10 @@ function App() {
         {filters.map((filter, index) => (
           <button
             key={index}
-            className={`px-4 py-2 rounded-lg hover:scale-110 transition-all ease-in-out duration-700 border-none ${
+            className={`px-4 py-2 rounded-lg hover:scale-110  transition-all ease-in-out duration-700 border-none ${
               activeTab === filter.text
-                ? "bg-prime text-white scale-125"
-                : "bg-gray-100"
+                ? "bg-prime text-white scale-110 shadow-2xl transition-all transform -translate-y-4"
+                : "bg-gray-100 text-gray-400"
             }`}
             onClick={() => handleTabClick(filter.endpoint, filter.text)}
           >
@@ -124,10 +124,10 @@ function App() {
           {filters.map((filter, index) => (
             <SwiperSlide key={index}>
               <button
-                className={`px-4 py-2 rounded-lg hover:scale-110 transition-all ease-in-out duration-700 ${
+                className={`px-4 py-2 rounded-lg ${
                   activeTab === filter.text
-                    ? "bg-prime text-white scale-125 "
-                    : "bg-gray-100"
+                    ? "bg-prime text-white border-none"
+                    : "bg-gray-100 text-gray-400"
                 }`}
                 onClick={() => handleTabClick(filter.endpoint, filter.text)}
               >
@@ -148,7 +148,7 @@ function App() {
         >
           <textarea
             className="flex-1 p-4 border rounded-lg resize-none h-64 md:h-96 text-sm w-full bg-gray-100 focus:outline-none focus:ring-0"
-            placeholder="Write Smart, Write Right 😌"
+            placeholder="Write Smart, Write Right..."
             value={inputText}
             onChange={handleInputChange}
           />
@@ -167,7 +167,7 @@ function App() {
             placeholder={
               Loading
                 ? "Thinking... 🤔"
-                : "Paraphrased content will appear here"
+                : "Your paraphrased content will appear here"
             }
             value={outputText}
             readOnly
