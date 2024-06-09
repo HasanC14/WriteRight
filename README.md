@@ -23,7 +23,7 @@ WriteRight is a cutting-edge platform that helps users communicate more effectiv
 - [daisyUI](https://daisyui.com/docs/install/)
 - [Express.js](https://expressjs.com/)
 - [Node.js](https://nodejs.org/en/)
-- [Gemini API]([https://openai.com/api/](https://ai.google.dev/gemini-api/docs/quickstart?lang=node))
+- [Gemini API](https://ai.google.dev/gemini-api/docs/quickstart?lang=node)
 
 ## Getting Started
 
