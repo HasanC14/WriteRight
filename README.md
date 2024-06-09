@@ -1,16 +1,16 @@
 # WriteRight
 
-WriteRight is a cutting-edge platform that helps users communicate more effectively and professionally. By leveraging the power of [OpenAI's](https://openai.com/api/) language processing technology, WriteRight offers a suite of tools to enhance your writing, including Rewriting, Grammar Checking, and Tone Conversion.
+WriteRight is a cutting-edge platform that helps users communicate more effectively and professionally. By leveraging the power of [Google's]([https://openai.com/api/](https://ai.google.dev/gemini-api/docs/quickstart?lang=node)) language processing technology, WriteRight offers a suite of tools to enhance your writing, including Rewriting, Grammar Checking, and Tone Conversion.
 
 ## Live Site
 
-https://write-right-1111.netlify.app/
+[https://write-right.vercel.app/](https://write-right.vercel.app/)
 
 ## Features
 
 - Rewriting
 - Grammar Checking
-- Tone Conversion
+- Tone Conversion (including Formal, Creative, Concise, and more)
 - Summarize
 - Fast and reliable
 - Built with latest web technologies
@@ -23,7 +23,7 @@ https://write-right-1111.netlify.app/
 - [daisyUI](https://daisyui.com/docs/install/)
 - [Express.js](https://expressjs.com/)
 - [Node.js](https://nodejs.org/en/)
-- [OpenAI's](https://openai.com/api/)
+- [Gemini API](https://ai.google.dev/gemini-api/docs/quickstart?lang=node)
 
 ## Getting Started
 
