@@ -1,6 +1,6 @@
 # WriteRight
 
-WriteRight is a cutting-edge platform that helps users communicate more effectively and professionally. By leveraging the power of [Google's]([https://openai.com/api/](https://ai.google.dev/gemini-api/docs/quickstart?lang=node)) language processing technology, WriteRight offers a suite of tools to enhance your writing, including Rewriting, Grammar Checking, and Tone Conversion.
+WriteRight is a cutting-edge platform that helps users communicate more effectively and professionally. By leveraging the power of [Google's](<[https://openai.com/api/](https://ai.google.dev/gemini-api/docs/quickstart?lang=node)>) language processing technology, WriteRight offers a suite of tools to enhance your writing, including Rewriting, Grammar Checking, and Tone Conversion.
 
 ## Live Site
 
@@ -36,7 +36,3 @@ To get started with WriteRight, simply clone this repository and run the followi
 ## Contributing
 
 We welcome contributions to WriteRight. If you find a bug or have an idea for a new feature, please create an issue in this repository. If you would like to contribute code, simply fork this repository and submit a pull request.
-
-## License
-
-WriteRight is licensed under the MIT License. See [LICENSE](LICENSE) for more information.
