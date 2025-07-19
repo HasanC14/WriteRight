@@ -51,12 +51,9 @@ function App() {
     setOutputText("");
     if (inputText) {
       await axios
-        .post(
-          `https://write-right-server-p4f3-hasanc14-hasanc14s-projects.vercel.app/${endpoint}`,
-          {
-            inputValue: inputText,
-          }
-        )
+        .post(`http://localhost:5000/${endpoint}`, {
+          inputValue: inputText,
+        })
         .then((response) => {
           setOutputText(response.data);
           setLoading(false);
