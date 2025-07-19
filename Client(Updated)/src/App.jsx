@@ -51,7 +51,7 @@ function App() {
     setOutputText("");
     if (inputText) {
       await axios
-        .post(`http://localhost:5000/${endpoint}`, {
+        .post(`https://writeright-server.vercel.app/${endpoint}`, {
           inputValue: inputText,
         })
         .then((response) => {
